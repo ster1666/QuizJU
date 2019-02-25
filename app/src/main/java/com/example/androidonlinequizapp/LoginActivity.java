@@ -124,7 +124,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                // ...
+
+                Intent homeActivity = new Intent(LoginActivity.this,Home.class);
+                Common.currentFirebaseUser = user;
+                startActivity(homeActivity);
+                finish();
             } else {
                 // Sign in failed. If response is null the user canceled the
                 // sign-in flow using the back button. Otherwise check
