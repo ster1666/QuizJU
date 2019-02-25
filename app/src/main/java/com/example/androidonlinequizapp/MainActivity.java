@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.example.androidonlinequizapp.Common.Common;
 import com.example.androidonlinequizapp.Model.Category;
 import com.example.androidonlinequizapp.Model.User;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     Button btnSignUp, btnSignIn;
-
     FirebaseDatabase database;
     DatabaseReference users;
 
@@ -45,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         //Firebase
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
-
 
 
         edtUser = (MaterialEditText) findViewById(R.id.edtUser);
@@ -72,8 +72,13 @@ public class MainActivity extends AppCompatActivity {
 
                 signIn(edtUser.getText().toString(),edtPassword.getText().toString());
 
+
+
+
             }
         });
+
+
     }
 
     private void signIn(final String user, final String pwd) {
@@ -177,4 +182,10 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
 
     }
+
+
+
+
+
+
 }
