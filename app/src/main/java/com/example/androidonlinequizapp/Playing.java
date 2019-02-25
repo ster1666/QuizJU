@@ -1,5 +1,9 @@
 package com.example.androidonlinequizapp;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +27,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
 
 
     final static long INTERVAL = 1000;
-    final static long TIMEOUT = 7000;
+    final static long TIMEOUT = 11000;
 
     int progressValue = 0;
 
@@ -53,6 +57,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
         questions = database.getReference();
 */
         //views
+
         txtScore = (TextView)findViewById(R.id.txtScore);
         txtQuestionNum = (TextView)findViewById(R.id.txtTotalQuestion);
         question_text = (TextView)findViewById(R.id.question_text);
@@ -61,10 +66,15 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
 
         progressBar =(ProgressBar)findViewById(R.id.progressBar);
 
+
+
+
+
         btnA = (Button)findViewById(R.id.btnAnswerA);
         btnB = (Button)findViewById(R.id.btnAnswerB);
         btnC = (Button)findViewById(R.id.btnAnswerC);
         btnD = (Button)findViewById(R.id.btnAnswerD);
+
 
 
         btnA.setOnClickListener(this);
@@ -72,8 +82,31 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
         btnC.setOnClickListener(this);
         btnD.setOnClickListener(this);
 
+        //fadeIn();
+
+        fadeIn(2000, btnA, btnB, btnC,btnD);
+
 
     }
+
+
+
+
+    private static void fadeIn(long duration, final View... views) {
+        if (views == null) return;
+        final ValueAnimator va = ValueAnimator.ofFloat(0, 1);
+        va.setDuration(duration);
+        va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animator) {
+                final float alpha = (float) animator.getAnimatedValue();
+                for (View view : views) view.setAlpha(alpha);
+            }
+        });
+        va.start();
+    }
+
+
 
     @Override
     public void onClick(View view) {
@@ -82,20 +115,31 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
         if (index < totalQuestion)
         {
             Button clickedButton = (Button)view;
+            fadeIn(2000, btnA, btnB, btnC,btnD);
+
+            //  fadeIn();
 
             if (clickedButton.getText().equals(Common.questionsList.get(index).getCorrectAnswer()))
             {
+
+
                 //correct Answer
                 score+=10;
                 correctAnswer++;
                 showQuestion(++index); //next question
 
+               // fadeIn();
 
             }
             else
             {
                 //Wrong Answer
+
+
+
                 showQuestion(++index); //next question
+
+                //fadeIn();
                 /* IF WE WANT TO END GAME ON WRONG ANSWER
                 Intent intent = new Intent(this,Done.class);
                 Bundle dataSend = new Bundle();
@@ -122,6 +166,10 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
             txtQuestionNum.setText(String.format("%d / %d", thisQuestion,totalQuestion));
             progressBar.setProgress(0);
             progressValue=0;
+            fadeIn(2000, btnA, btnB, btnC,btnD);
+
+            // fadeIn();
+
 
 
             if (Common.questionsList.get(index).getIsImageQuestion().equals("true"))
