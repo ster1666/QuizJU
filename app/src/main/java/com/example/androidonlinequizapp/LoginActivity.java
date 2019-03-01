@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private static final int RC_SIGN_IN = 123;
 
     EditText mUsername, mPassword;
-    Button mSignInButton;
+    Button mSignInButton, mSignUpButton;
 
     SignInButton mGoogleSignInButton;
 
@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mSignInButton = findViewById(R.id.username_sign_in_button);
         mGoogleSignInButton = findViewById(R.id.google_sign_in_button);
         mGoogleSignInButton.setOnClickListener(this);
+        mSignUpButton = findViewById(R.id.signup_button);
 
         //Firebase
         database = FirebaseDatabase.getInstance();
@@ -61,6 +62,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 signIn(mUsername.getText().toString(), mPassword.getText().toString());
             }
         });
+
+        mSignUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToSignUpActivity();
+            }
+        });
+    }
+
+    private void goToSignUpActivity() {
+        Intent target = new Intent(LoginActivity.this,SignupActivity.class);
+        startActivity(target);
+        finish();
     }
 
     private void signIn(final String user, final String pwd) {
