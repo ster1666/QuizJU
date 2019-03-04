@@ -1,7 +1,10 @@
 package com.example.androidonlinequizapp;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.Arrays;
 import java.util.List;
@@ -147,7 +151,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 // Sign in failed. If response is null the user canceled the
                 // sign-in flow using the back button. Otherwise check
                 // response.getError().getErrorCode() and handle the error.
-                // ...
             }
         }
     }

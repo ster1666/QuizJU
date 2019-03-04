@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         users = database.getReference("Users");
 
 
-        edtUser = (MaterialEditText) findViewById(R.id.edtUser);
-        edtPassword = (MaterialEditText)findViewById(R.id.edtPassword);
+        edtUser = findViewById(R.id.edtUser);
+        edtPassword = findViewById(R.id.edtPassword);
 
 
         btnSignIn = (Button)findViewById(R.id.btn_sign_in);

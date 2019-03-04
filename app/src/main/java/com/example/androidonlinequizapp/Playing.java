@@ -207,7 +207,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
             dataSend.putInt("CORRECT",correctAnswer);
             intent.putExtras(dataSend);
             startActivity(intent);
-            finish();
+            //finish();
 
         }
 
