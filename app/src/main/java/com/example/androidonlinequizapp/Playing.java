@@ -21,6 +21,8 @@ import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
+import java.util.Random;
+
 import dagger.multibindings.ElementsIntoSet;
 
 public class Playing extends AppCompatActivity implements View.OnClickListener {
@@ -68,8 +70,6 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
 
 
 
-
-
         btnA = (Button)findViewById(R.id.btnAnswerA);
         btnB = (Button)findViewById(R.id.btnAnswerB);
         btnC = (Button)findViewById(R.id.btnAnswerC);
@@ -86,10 +86,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
 
         fadeIn(2000, btnA, btnB, btnC,btnD);
 
-
     }
-
-
 
 
     private static void fadeIn(long duration, final View... views) {
@@ -107,11 +104,12 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
     }
 
 
-
     @Override
     public void onClick(View view) {
 
         mCountDown.cancel();
+
+
         if (index < totalQuestion)
         {
             Button clickedButton = (Button)view;
@@ -169,8 +167,6 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
             fadeIn(2000, btnA, btnB, btnC,btnD);
 
             // fadeIn();
-
-
 
             if (Common.questionsList.get(index).getIsImageQuestion().equals("true"))
             {

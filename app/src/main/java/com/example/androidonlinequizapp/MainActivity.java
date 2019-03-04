@@ -72,9 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
                 signIn(edtUser.getText().toString(),edtPassword.getText().toString());
 
-
-
-
             }
         });
 
