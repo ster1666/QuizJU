@@ -16,5 +16,11 @@
         android:icon="@drawable/ic_star_black_24dp"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/action_settings"
+        android:enabled="true"
+        android:title="Settings"
+        android:icon="@drawable/ic_settings_black_24dp"
+        app:showAsAction="ifRoom"/>
 
 </menu>
