@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidOnlineQuizApp</string>
+    <string name="name">Namn</string>
+    <string name="score">Poäng</string>
+    <string name="prompt_username">Skriv in användarnamn</string>
+    <string name="title_activity_login">Logga in</string>
+    <string name="prompt_email">Skriv in email</string>
+    <string name="prompt_password">Skriv in lösenord</string>
+    <string name="action_sign_in">Logga in</string>
+    <string name="action_sign_in_short">Logga in</string>
+    <string name="error_invalid_password">Lösenordet är för kort</string>
+    <string name="error_incorrect_password">Fel lösenord</string>
+    <string name="error_field_required">Obligatoriskt fält</string>
+    <string name="permission_rationale">Tillåt kontaktåtkomst</string>
+    <string name="signup_button_text">"Skapa konto "</string>
+    <string name="hello_blank_fragment">Hej tomt fragment</string>
+    <string name="error_invalid_email">Ogiltlig emailadress</string>
+</resources>

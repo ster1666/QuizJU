@@ -20,4 +20,6 @@
     </string>
     <string name="prompt_username">Enter Username</string>
     <string name="signup_button_text">No account? Create one now!</string>
+    <string name="forgot_pwd">Forgot Password</string>
+    <string name="logoutButton">Logout</string>
 </resources>

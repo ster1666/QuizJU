@@ -1,6 +1,8 @@
 package com.example.androidonlinequizapp;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -145,6 +147,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 Intent homeActivity = new Intent(LoginActivity.this,Home.class);
                 Common.currentFirebaseUser = user;
+                Common.isLoggedIn = true;
+                Common.isFirebaseUser = true;
                 startActivity(homeActivity);
                 finish();
             } else {

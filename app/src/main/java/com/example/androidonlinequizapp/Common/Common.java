@@ -14,6 +14,9 @@ public class Common {
     public static  User currentUser;
     public  static List<Question> questionsList = new ArrayList<>();
 
+    public static Boolean isLoggedIn;
+    public static Boolean isFirebaseUser;
+
     public static FirebaseUser currentFirebaseUser;
 
 }
