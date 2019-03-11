@@ -17,6 +17,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInApi;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 import static com.google.firebase.inappmessaging.internal.Logging.TAG;
@@ -27,6 +34,7 @@ public class SettingsFragment extends Fragment {
     View myFragment;
 
     Button btnChangePwd,btnSignOut;
+    GoogleApiClient mGoogleApiClient;
 
     public static SettingsFragment newInstance()
     {
@@ -35,6 +43,7 @@ public class SettingsFragment extends Fragment {
         return settingsFragment;
 
     }
+
 
 
 
@@ -60,12 +69,23 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+
         btnSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Signout button clicked");
 
-                FirebaseAuth.getInstance().signOut();
+
+                AuthUI.getInstance().delete(getActivity()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Log.d(TAG, "Signout succeded");
+                                } else {
+                                    Log.d(TAG, "Signout failed");
+                                }
+                            }
+                        });
 
 
 

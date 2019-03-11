@@ -38,11 +38,6 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
     int index=0,score=0,thisQuestion=0,totalQuestion=0,correctAnswer;
 
 
-    //FIREBASE
-/*
-    FirebaseDatabase database;
-    DatabaseReference questions;
-*/
     ProgressBar progressBar;
     ImageView question_image;
     Button btnA,btnB,btnC,btnD;
