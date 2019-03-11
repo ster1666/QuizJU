@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +37,7 @@ import static com.example.androidonlinequizapp.R.layout.activity_login;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int RC_SIGN_IN = 123;
+    private static final String TAG = "LoginActivity";
 
     EditText mUsername, mPassword;
     Button mSignInButton, mSignUpButton;
@@ -145,10 +147,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                Intent homeActivity = new Intent(LoginActivity.this,Home.class);
                 Common.currentFirebaseUser = user;
-                Common.isLoggedIn = true;
                 Common.isFirebaseUser = true;
+
+                Intent homeActivity = new Intent(LoginActivity.this,Home.class);
                 startActivity(homeActivity);
                 finish();
             } else {

@@ -23,6 +23,38 @@
           }
         },
         {
+          "client_id": "146931417556-618m2ko0e0s8j60gdphfoja0t4qn5tvr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.androidonlinequizapp",
+            "certificate_hash": "8dd56fb26b2d95d182eff0a1d43c539ee3f84d34"
+          }
+        },
+        {
+          "client_id": "146931417556-1nitecoadudjm6ba3lr5b32dj0pa3k3i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.androidonlinequizapp",
+            "certificate_hash": "7daf42970ad7c2eacd415070a273e5998b4bcf25"
+          }
+        },
+        {
+          "client_id": "146931417556-sun4muh7qcso12a24dehf6nm7ua018dt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.androidonlinequizapp",
+            "certificate_hash": "a5d3a9a60b55120b176bfa54a3c65c407391802e"
+          }
+        },
+        {
+          "client_id": "146931417556-id03gneoid1n2aten387sepogk5hveci.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.androidonlinequizapp",
+            "certificate_hash": "2666f6efdc5e0e844e78498014c24cdfbbc44e6c"
+          }
+        },
+        {
           "client_id": "146931417556-pobshknutj5ps9qmje49qi7uu84hq7ku.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -64,13 +64,21 @@ public class Done extends AppCompatActivity {
 
             //Upload point to Firebase
 
-            question_score.child(String.format("%s_%s", Common.currentUser.getUserName(),
-                    Common.categoryId))
+            if(Common.isFirebaseUser){
+                question_score.child(String.format("%s_%s", Common.currentFirebaseUser.getDisplayName(), Common.categoryId))
+                        .setValue(new QuestionScore(String.format("%s_%s", Common.currentFirebaseUser.getDisplayName(),
+                                Common.categoryId),
+                                Common.currentFirebaseUser.getDisplayName(),
+                                String.valueOf(score)));
+            }else if (!Common.isFirebaseUser){
+                question_score.child(String.format("%s_%s", Common.currentUser.getUserName(),
+                        Common.categoryId))
 
-                    .setValue(new QuestionScore(String.format("%s_%s", Common.currentUser.getUserName(),
-                            Common.categoryId),
-                            Common.currentUser.getUserName(),
-                            String.valueOf(score)));
+                        .setValue(new QuestionScore(String.format("%s_%s", Common.currentUser.getUserName(),
+                                Common.categoryId),
+                                Common.currentUser.getUserName(),
+                                String.valueOf(score)));
+            }
         }
 
     }

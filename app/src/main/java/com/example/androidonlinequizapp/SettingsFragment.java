@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.androidonlinequizapp.Common.Common;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -81,6 +82,7 @@ public class SettingsFragment extends Fragment {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Log.d(TAG, "Signout succeded");
+                                    Common.isFirebaseUser = false;
                                 } else {
                                     Log.d(TAG, "Signout failed");
                                 }
