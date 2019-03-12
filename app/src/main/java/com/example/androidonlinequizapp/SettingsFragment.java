@@ -26,6 +26,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import static com.google.firebase.inappmessaging.internal.Logging.TAG;
 
@@ -34,7 +35,9 @@ public class SettingsFragment extends Fragment {
 
     View myFragment;
 
-    Button btnChangePwd,btnSignOut;
+    final String TAG = "SettingsFragment";
+
+    Button btnChangePwd,btnSignOut, btnDeleteUser;
     GoogleApiClient mGoogleApiClient;
 
     public static SettingsFragment newInstance()
@@ -57,11 +60,26 @@ public class SettingsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "isFirebaseUser: ");
+        Log.d(TAG, Common.isFirebaseUser.toString());
         myFragment = inflater.inflate(R.layout.fragment_settings, container, false);
+
+        FirebaseUser currentFirebaseUser = Common.currentFirebaseUser;
+
+        if(Common.isFirebaseUser){
+            Log.d(TAG, "current firebase user: ");
+            Log.d(TAG, currentFirebaseUser.getDisplayName());
+        }
 
 
         btnSignOut = myFragment.findViewById(R.id.signoutButton);
         btnChangePwd = myFragment.findViewById(R.id.changePasswordButton);
+        btnDeleteUser = myFragment.findViewById(R.id.deleteUser);
+
+        //Show change pwd if user is not firebase user
+        if(!Common.isFirebaseUser){
+
+        }
 
         btnChangePwd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,26 +94,67 @@ public class SettingsFragment extends Fragment {
             public void onClick(View v) {
                 Log.d(TAG, "Signout button clicked");
 
+                if (Common.isFirebaseUser) {
+                    signOutGoogleUser();
+                    Common.currentFirebaseUser = null;
+                }
+                else if (!Common.isFirebaseUser){
+                    logout();
+                }
+            }
+        });
 
-                AuthUI.getInstance().delete(getActivity()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Log.d(TAG, "Signout succeded");
-                                    Common.isFirebaseUser = false;
-                                } else {
-                                    Log.d(TAG, "Signout failed");
-                                }
-                            }
-                        });
+        btnDeleteUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Common.isFirebaseUser) {
+                    deleteGoogleUser();
+                }
+                else if (!Common.isFirebaseUser){
 
-
-
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
+                }
             }
         });
 
         return myFragment;
+    }
+
+    private void deleteGoogleUser(){
+        AuthUI.getInstance().delete(getActivity()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Log.d(TAG, "delete account succeded");
+                    Common.isFirebaseUser = false;
+                } else {
+                    Log.d(TAG, "Signout failed");
+                }
+            }
+        });
+
+
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivity(intent);
+    }
+
+    private void signOutGoogleUser(){
+        AuthUI.getInstance().signOut(getActivity()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Log.d(TAG, "Signout succeded");
+                    Common.isFirebaseUser = false;
+                } else {
+                    Log.d(TAG, "Signout failed");
+                }
+            }
+        });
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivity(intent);
+    }
+
+    private void logout(){
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivity(intent);
     }
 }

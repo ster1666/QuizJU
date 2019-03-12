@@ -112,6 +112,8 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
 
             //  fadeIn();
 
+
+
             if (clickedButton.getText().equals(Common.questionsList.get(index).getCorrectAnswer()))
             {
 

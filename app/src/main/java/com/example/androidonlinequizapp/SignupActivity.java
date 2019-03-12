@@ -73,14 +73,14 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(user.getUserName()).exists())
-                    Toast.makeText(SignupActivity.this, "User Already Exists!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "User Already Exists!", Toast.LENGTH_LONG).show();
 
 
                 else
                 {
                     users.child(user.getUserName())
                             .setValue(user);
-                    Toast.makeText(SignupActivity.this, "User registration success!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "User registration success!", Toast.LENGTH_LONG).show();
 
                     Intent target = new Intent(SignupActivity.this, LoginActivity.class);
                     startActivity(target);

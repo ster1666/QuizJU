@@ -97,16 +97,16 @@ public class MainActivity extends AppCompatActivity {
                             finish();
                         }
                         else
-                            Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Wrong Password", Toast.LENGTH_LONG).show();
                     }
                     else
                     {
-                        Toast.makeText(MainActivity.this, "Please enter a Username", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Please enter a Username", Toast.LENGTH_LONG).show();
                     }
 
                 }
                 else
-                    Toast.makeText(MainActivity.this, "User does not exist", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "User does not exist", Toast.LENGTH_LONG).show();
             }
 
             @Override

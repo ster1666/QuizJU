@@ -16,4 +16,9 @@
     <string name="signup_button_text">"Skapa konto "</string>
     <string name="hello_blank_fragment">Hej tomt fragment</string>
     <string name="error_invalid_email">Ogiltlig emailadress</string>
+
+    <string name="change_pwd">Byt lösenord</string>
+    <string name="logoutButton">Logga ut</string>
+    <string name="try_again_prompt">Spela igen</string>
+    <string name="delete_user">Radera konto</string>
 </resources>
