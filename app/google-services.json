@@ -55,14 +55,6 @@
           }
         },
         {
-          "client_id": "146931417556-11vebbr9d4o8h52f5f5u4esua8fdq08g.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.androidonlinequizapp",
-            "certificate_hash": "ce5535885ed5c83fc131436ac3ca3f2655ab8d2a"
-          }
-        },
-        {
           "client_id": "146931417556-pobshknutj5ps9qmje49qi7uu84hq7ku.apps.googleusercontent.com",
           "client_type": 3
         }

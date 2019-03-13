@@ -23,7 +23,6 @@ import com.example.androidonlinequizapp.Model.QuestionScore;
 import com.example.androidonlinequizapp.Model.Ranking;
 import com.example.androidonlinequizapp.ViewHolder.RankingViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,7 +41,7 @@ public class RankingFragment extends Fragment {
     FirebaseRecyclerAdapter<Ranking, RankingViewHolder> adapter;
 
     FirebaseDatabase database;
-    DatabaseReference questionScore,rankingTbl, userScore;
+    DatabaseReference questionScore,rankingTbl;
 
     int sum=0;
 
@@ -58,7 +57,6 @@ public class RankingFragment extends Fragment {
         database = FirebaseDatabase.getInstance();
         questionScore = database.getReference("Question_Score");
         rankingTbl = database.getReference("Ranking");
-        userScore = database.getReference("Ranking");
     }
 
     @Nullable
@@ -148,36 +146,17 @@ public class RankingFragment extends Fragment {
 
 
     private void updateScore(final String userName, final RankingCallback<Ranking> callback) {
-
-        if(!Common.isFirebaseUser){
-            questionScore.orderByChild("user").equalTo(userName)
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            for(DataSnapshot data:dataSnapshot.getChildren())
-                            {
-                                QuestionScore ques = data.getValue(QuestionScore.class);
-                                sum+=Integer.parseInt(ques.getScore());
-                            }
-                            Ranking ranking = new Ranking(userName,sum);
-                            callback.callback(ranking);
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-        }
-    }
-
-    private void getCurrentGoogleUserScore(final FirebaseUser user){
-
-        userScore.child(user.getDisplayName())
+        questionScore.orderByChild("user").equalTo(userName)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                        for(DataSnapshot data:dataSnapshot.getChildren())
+                        {
+                            QuestionScore ques = data.getValue(QuestionScore.class);
+                            sum+=Integer.parseInt(ques.getScore());
+                        }
+                        Ranking ranking = new Ranking(userName,sum);
+                        callback.callback(ranking);
                     }
 
                     @Override
