@@ -10,7 +10,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.androidonlinequizapp.Common.Common;
+import com.example.androidonlinequizapp.Model.Ranking;
 import com.example.androidonlinequizapp.Model.User;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +33,7 @@ public class SignupActivity extends AppCompatActivity {
     Button mCreateAccountButton;
 
     FirebaseDatabase database;
-    DatabaseReference users;
+    DatabaseReference users, ranking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class SignupActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
+        ranking = database.getReference("Ranking");
 
     }
 
@@ -82,10 +86,34 @@ public class SignupActivity extends AppCompatActivity {
                             .setValue(user);
                     Toast.makeText(SignupActivity.this, "User registration success!", Toast.LENGTH_SHORT).show();
 
+                    initializeScoreForUser();
+
                     Intent target = new Intent(SignupActivity.this, LoginActivity.class);
                     startActivity(target);
                     finish();
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void initializeScoreForUser(){
+        ranking.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if(!dataSnapshot.hasChild(Common.currentUser.getUserName())){
+
+                    User newUser = Common.currentUser;
+                    ranking.child(Common.currentUser.getUserName())
+                            .setValue(new Ranking(newUser.getUserName(), 0));
+
+                }
+
             }
 
             @Override

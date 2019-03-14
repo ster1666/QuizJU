@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.androidonlinequizapp.Common.Common;
@@ -36,6 +37,9 @@ public class SettingsFragment extends Fragment {
 
     Button btnChangePwd,btnSignOut;
     GoogleApiClient mGoogleApiClient;
+    TextView usernameLabel;
+
+    final static String TAG = "SettingsFragment";
 
     public static SettingsFragment newInstance()
     {
@@ -62,6 +66,17 @@ public class SettingsFragment extends Fragment {
 
         btnSignOut = myFragment.findViewById(R.id.signoutButton);
         btnChangePwd = myFragment.findViewById(R.id.changePasswordButton);
+        usernameLabel = myFragment.findViewById(R.id.usernameLabel);
+        String welcomeText;
+
+        if(Common.isFirebaseUser){
+            welcomeText = "Welcome " + Common.currentFirebaseUser.getDisplayName();
+            usernameLabel.setText(welcomeText);
+
+        }else{
+            welcomeText = "Welcome " + Common.currentUser.getUserName();
+            usernameLabel.setText(welcomeText);
+        }
 
         btnChangePwd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,18 +91,41 @@ public class SettingsFragment extends Fragment {
             public void onClick(View v) {
                 Log.d(TAG, "Signout button clicked");
 
+                if(Common.isFirebaseUser){
+                    Log.d(TAG, "isFirebaseUser == true");
 
-                AuthUI.getInstance().delete(getActivity()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Log.d(TAG, "Signout succeded");
-                                    Common.isFirebaseUser = false;
-                                } else {
-                                    Log.d(TAG, "Signout failed");
-                                }
+                    AuthUI.getInstance().signOut(getActivity()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Log.d(TAG, "Signout succeded");
+                                Common.isFirebaseUser = false;
+                            } else {
+                                Log.d(TAG, "Signout failed");
                             }
-                        });
+                        }
+                    });
+
+
+                }
+                else{
+                    Log.d(TAG, "isFirebaseUser == false");
+                    AuthUI.getInstance().signOut(getActivity()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Log.d(TAG, "delete succeded");
+                                Common.isFirebaseUser = false;
+                            } else {
+                                Log.d(TAG, "delete failed");
+                            }
+                        }
+                    });
+
+                }
+
+
+
 
 
 

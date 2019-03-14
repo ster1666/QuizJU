@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.androidonlinequizapp.Common.Common;
+import com.example.androidonlinequizapp.Model.Ranking;
 import com.example.androidonlinequizapp.Model.User;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
@@ -45,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     SignInButton mGoogleSignInButton;
 
     FirebaseDatabase database;
-    DatabaseReference users;
+    DatabaseReference users, rankingTbl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +59,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mSignInButton = findViewById(R.id.username_sign_in_button);
         mGoogleSignInButton = findViewById(R.id.google_sign_in_button);
         mGoogleSignInButton.setOnClickListener(this);
+        mGoogleSignInButton.setSize(SignInButton.SIZE_STANDARD);
         mSignUpButton = findViewById(R.id.signup_button);
 
         //Firebase
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
+        rankingTbl = database.getReference("Ranking");
 
         mSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,10 +149,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
+                initializeScoreForGoogleUser();
                 Common.currentFirebaseUser = user;
                 Common.isFirebaseUser = true;
-
                 Intent homeActivity = new Intent(LoginActivity.this,Home.class);
                 startActivity(homeActivity);
                 finish();
@@ -166,4 +168,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         createSignInIntent();
     }
     // [END auth_fui_result]
+
+    private void initializeScoreForGoogleUser(){
+        rankingTbl.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    if(!dataSnapshot.hasChild(Common.currentFirebaseUser.getDisplayName())){
+
+                        FirebaseUser newUser = Common.currentFirebaseUser;
+                        rankingTbl.child(Common.currentFirebaseUser.getDisplayName())
+                                .setValue(new Ranking(newUser.getDisplayName(), 0));
+
+                    }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 }
