@@ -75,8 +75,8 @@ public class Done extends AppCompatActivity {
 
             if(Common.isFirebaseUser){
                 uploadScoreForGoogleUser(Common.currentFirebaseUser, score);
-            }else if (!Common.isFirebaseUser){
-                uploadScoreForAppUser(Common.currentUser, score);
+            }else if (!Common.isFirebaseUser && !Common.isAnonUser){
+                    uploadScoreForAppUser(Common.currentUser, score);
             }
         }
 

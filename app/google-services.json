@@ -79,6 +79,14 @@
           }
         },
         {
+          "client_id": "146931417556-1uva7j6jin6m4eic16a99dm7vqpmopu3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.androidonlinequizapp",
+            "certificate_hash": "83bdba0a862d2b9fae1a4f7230f6ec9e2c032ab7"
+          }
+        },
+        {
           "client_id": "146931417556-pobshknutj5ps9qmje49qi7uu84hq7ku.apps.googleusercontent.com",
           "client_type": 3
         }

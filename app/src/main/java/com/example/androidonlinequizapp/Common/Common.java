@@ -18,5 +18,6 @@ public class Common {
     public static Boolean isFirebaseUser = false;
 
     public static FirebaseUser currentFirebaseUser;
+    public static Boolean isAnonUser = false;
 
 }

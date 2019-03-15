@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private static final String TAG = "LoginActivity";
 
     EditText mUsername, mPassword;
-    Button mSignInButton, mSignUpButton;
+    Button mSignInButton, mSignUpButton, mPlayWithoutAccBtn;
 
     SignInButton mGoogleSignInButton;
 
@@ -61,6 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mGoogleSignInButton.setOnClickListener(this);
         mGoogleSignInButton.setSize(SignInButton.SIZE_STANDARD);
         mSignUpButton = findViewById(R.id.signup_button);
+        mPlayWithoutAccBtn = findViewById(R.id.playWithoutAccount);
 
         //Firebase
         database = FirebaseDatabase.getInstance();
@@ -78,6 +79,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onClick(View v) {
                 goToSignUpActivity();
+            }
+        });
+
+        mPlayWithoutAccBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Common.isAnonUser = true;
+
+                Intent intent = new Intent(LoginActivity.this, Home.class);
+                startActivity(intent);
             }
         });
     }

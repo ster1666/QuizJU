@@ -90,6 +90,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/signup_button_text" />
 
+            <Button
+                android:id="@+id/playWithoutAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/playWithoutAccount" />
+
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

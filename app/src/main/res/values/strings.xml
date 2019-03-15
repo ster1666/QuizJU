@@ -23,4 +23,6 @@
     <string name="change_pwd">Change Password</string>
     <string name="logoutButton">Logout</string>
     <string name="try_again_prompt">Play Again</string>
+    <string name="playWithoutAccount">Play Without Account</string>
+    <string name="promptSignIn">Sign In</string>
 </resources>

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 
+import com.example.androidonlinequizapp.Common.Common;
 import com.example.androidonlinequizapp.Model.Category;
 
 public class Home extends AppCompatActivity {
@@ -27,22 +28,23 @@ public class Home extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 Fragment selectedFragment = null;
-                switch (item.getItemId())
-                {
-                    case R.id.action_category:
-                        selectedFragment = CategoryFragment.newInstance();
-                        break;
-                    case R.id.action_ranking:
-                        selectedFragment = RankingFragment.newInstance();
-                        break;
-                    case R.id.action_settings:
-                        selectedFragment = SettingsFragment.newInstance();
-                        break;
-                }
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout,selectedFragment);
-                transaction.commit();
-                return true;
+
+                    switch (item.getItemId())
+                    {
+                        case R.id.action_category:
+                            selectedFragment = CategoryFragment.newInstance();
+                            break;
+                        case R.id.action_ranking:
+                            selectedFragment = RankingFragment.newInstance();
+                            break;
+                        case R.id.action_settings:
+                            selectedFragment = SettingsFragment.newInstance();
+                            break;
+                    }
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout,selectedFragment);
+                    transaction.commit();
+                    return true;
             }
 
         });

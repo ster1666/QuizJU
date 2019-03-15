@@ -27,6 +27,11 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import static com.google.firebase.inappmessaging.internal.Logging.TAG;
 
@@ -35,9 +40,12 @@ public class SettingsFragment extends Fragment {
 
     View myFragment;
 
-    Button btnChangePwd,btnSignOut;
+    Button btnChangePwd,btnSignOut, btnSignIn;
     GoogleApiClient mGoogleApiClient;
-    TextView usernameLabel;
+    TextView usernameLabel, userScoreLabel;
+
+    FirebaseDatabase database;
+    DatabaseReference ranking;
 
     final static String TAG = "SettingsFragment";
 
@@ -67,15 +75,61 @@ public class SettingsFragment extends Fragment {
         btnSignOut = myFragment.findViewById(R.id.signoutButton);
         btnChangePwd = myFragment.findViewById(R.id.changePasswordButton);
         usernameLabel = myFragment.findViewById(R.id.usernameLabel);
+        userScoreLabel = myFragment.findViewById(R.id.userScoreLabel);
         String welcomeText;
 
-        if(Common.isFirebaseUser){
-            welcomeText = "Welcome " + Common.currentFirebaseUser.getDisplayName();
-            usernameLabel.setText(welcomeText);
+        btnSignIn = myFragment.findViewById(R.id.signInIfNotAlreadySignedInButton);
 
-        }else{
-            welcomeText = "Welcome " + Common.currentUser.getUserName();
+        database = FirebaseDatabase.getInstance();
+        ranking = database.getReference("Ranking");
+
+
+        if(Common.isFirebaseUser){
+            welcomeText = "Welcome " + Common.currentFirebaseUser.getDisplayName() + "!";
             usernameLabel.setText(welcomeText);
+            btnSignIn.setVisibility(View.GONE);
+            btnChangePwd.setVisibility(View.GONE);
+
+            ranking.child(Common.currentFirebaseUser.getDisplayName())
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                           long scoreForCurrentlyLoggedInUser = (long) dataSnapshot.child("score").getValue();
+                          final String text = "You " + "have a score of: " + scoreForCurrentlyLoggedInUser;
+                          userScoreLabel.setText(text);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+        }else if(Common.isAnonUser){
+            welcomeText = "Please sign in to use this view!";
+            usernameLabel.setText(welcomeText);
+            btnChangePwd.setVisibility(View.GONE);
+            btnSignOut.setVisibility(View.GONE);
+            userScoreLabel.setVisibility(View.GONE);
+        } else{
+            welcomeText = "Welcome " + Common.currentUser.getUserName() + "!";
+            usernameLabel.setText(welcomeText);
+            btnSignIn.setVisibility(View.GONE);
+
+            ranking.child(Common.currentUser.getUserName())
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            long scoreForCurrentlyLoggedInUser = (long) dataSnapshot.child("score").getValue();
+                            final String text = "You " + "have a score of: " + scoreForCurrentlyLoggedInUser;
+                            userScoreLabel.setText(text);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
         }
 
         btnChangePwd.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +185,15 @@ public class SettingsFragment extends Fragment {
 
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                Common.isAnonUser = false;
             }
         });
 
