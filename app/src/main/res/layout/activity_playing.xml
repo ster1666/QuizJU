@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/flare"
+    android:background="@color/white"
     tools:context=".Playing">
 
     
@@ -47,7 +47,7 @@
                android:gravity="center"
                android:textSize="30sp"
                android:visibility="visible"
-               android:textColor="@android:color/white"/>
+               android:textColor="@android:color/black"/>
 
            <LinearLayout
                android:weightSum="2"
@@ -58,7 +58,7 @@
 
                <TextView
                    android:id="@+id/txtScore"
-                   android:textColor="@android:color/white"
+                   android:textColor="@android:color/black"
                    android:gravity="center"
                    android:text="0"
                    android:textSize="36sp"
@@ -68,7 +68,7 @@
 
              <TextView
                    android:id="@+id/txtTotalQuestion"
-                   android:textColor="@android:color/white"
+                   android:textColor="@android:color/black"
                    android:gravity="center"
                    android:text="0"
                    android:textSize="36sp"
@@ -94,7 +94,7 @@
                android:textStyle="bold"
                android:theme="@style/MyButton"
                style="@style/Widget.AppCompat.Button.Borderless"
-               android:background="#FF8a80"
+               android:background="#000000"
                android:layout_margin="8dp"
                android:foreground="?android:attr/selectableItemBackground"
                android:layout_width="match_parent"
@@ -107,7 +107,7 @@
                android:textStyle="bold"
                android:theme="@style/MyButton"
                style="@style/Widget.AppCompat.Button.Borderless"
-               android:background="#FF8a80"
+               android:background="#000000"
                android:layout_margin="8dp"
                android:foreground="?android:attr/selectableItemBackground"
                android:layout_width="match_parent"
@@ -120,7 +120,7 @@
                android:textStyle="bold"
                android:theme="@style/MyButton"
                style="@style/Widget.AppCompat.Button.Borderless"
-               android:background="#FF8a80"
+               android:background="#000000"
                android:layout_margin="8dp"
                android:foreground="?android:attr/selectableItemBackground"
                android:layout_width="match_parent"
@@ -133,7 +133,7 @@
                android:textStyle="bold"
                android:theme="@style/MyButton"
                style="@style/Widget.AppCompat.Button.Borderless"
-               android:background="#FF8a80"
+               android:background="#000000"
                android:layout_margin="8dp"
                android:foreground="?android:attr/selectableItemBackground"
                android:layout_width="match_parent"

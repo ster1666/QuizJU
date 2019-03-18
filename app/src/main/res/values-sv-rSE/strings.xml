@@ -22,4 +22,18 @@
     <string name="playWithoutAccountPrompt">Spela Utan Konto</string>
     <string name="playAgainPrompt">Spela Igen</string>
     <string name="deleteAccountPrompt">Radera Konto</string>
+    <string name="create_account">Skapa konto</string>
+    <string name="cancel">Avbryt</string>
+    <string name="user_exists">Användare existerar!</string>
+    <string name="user_regSuccess">Användare registrerades!</string>
+    <string name="enter_username">Skriv in användarnamn</string>
+    <string name="wrong_password">Felaktigt lösenord</string>
+    <string name="user_not_exists">Användare existerar inte</string>
+    <string name="wrong_password_login">Felaktigt lösenord</string>
+    <string name="enter_username_login">Skriv in användarnamn</string>
+    <string name="user_not_exists_login">Användare existerar inte</string>
+    <string name="categories">Kategorier</string>
+    <string name="ranking">Poäng</string>
+    <string name="settings">Inställningar</string>
+    <string name="play">Spela</string>
 </resources>

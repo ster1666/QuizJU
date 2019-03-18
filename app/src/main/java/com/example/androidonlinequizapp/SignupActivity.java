@@ -42,7 +42,7 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         mDefaultProfileImage = findViewById(R.id.default_profile_image);
-        mDefaultProfileImage.setImageResource(R.drawable.ic_account_circle_black_24dp);
+        mDefaultProfileImage.setImageResource(R.drawable.ju_se);
 
         mNewUsername = findViewById(R.id.newusername);
         mNewEmail = findViewById(R.id.newemail);
@@ -89,16 +89,16 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(user.getUserName()).exists())
-                    Toast.makeText(SignupActivity.this, "User Already Exists!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, R.string.user_exists, Toast.LENGTH_SHORT).show();
 
 
                 else
                 {
                     users.child(user.getUserName())
                             .setValue(user);
-                    Toast.makeText(SignupActivity.this, "User registration success!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, R.string.user_regSuccess, Toast.LENGTH_SHORT).show();
 
-                    initializeScoreForUser();
+                    initializeScoreForUser(user);
 
                     Intent target = new Intent(SignupActivity.this, LoginActivity.class);
                     startActivity(target);
@@ -113,15 +113,16 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    private void initializeScoreForUser(){
+    private void initializeScoreForUser(User user){
+
+        final User newUser = user;
         ranking.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if(!dataSnapshot.hasChild(Common.currentUser.getUserName())){
+                if(!dataSnapshot.hasChild(newUser.getUserName())){
 
-                    User newUser = Common.currentUser;
-                    ranking.child(Common.currentUser.getUserName())
+                    ranking.child(newUser.getUserName())
                             .setValue(new Ranking(newUser.getUserName(), 0));
 
                 }

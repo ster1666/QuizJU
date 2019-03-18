@@ -116,13 +116,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             startActivity(homeActivity);
                             finish();
                         } else
-                            Toast.makeText(LoginActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, R.string.wrong_password_login, Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(LoginActivity.this, "Please enter a Username", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, R.string.enter_username_login, Toast.LENGTH_SHORT).show();
                     }
 
                 } else
-                    Toast.makeText(LoginActivity.this, "User does not exist", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, R.string.user_not_exists_login, Toast.LENGTH_SHORT).show();
             }
 
             @Override

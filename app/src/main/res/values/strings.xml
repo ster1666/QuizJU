@@ -26,4 +26,20 @@
     <string name="playWithoutAccountPrompt">Play Without Account</string>
     <string name="playAgainPrompt">Play Again</string>
     <string name="deleteAccountPrompt">Delete Account</string>
+    <string name="create_account">Create Account</string>
+    <string name="cancel">Cancel</string>
+    <string name="user_exists">User Already Exists!</string>
+    <string name="user_regSuccess">User registration success!</string>
+    <string name="enter_username">Please enter a Username</string>
+    <string name="wrong_password">Wrong Password</string>
+    <string name="user_not_exists">User does not exist</string>
+    <string name="wrong_password_login">Wrong Password</string>
+    <string name="enter_username_login">Please enter a Username</string>
+    <string name="user_not_exists_login">User does not exist</string>
+    <string name="categories">Categories</string>
+    <string name="ranking">Ranking</string>
+    <string name="settings">Settings</string>
+    <string name="play">PLAY</string>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 </resources>

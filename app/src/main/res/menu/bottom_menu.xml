@@ -5,21 +5,21 @@
     <item
         android:id="@+id/action_category"
         android:enabled="true"
-        android:title="Categories"
+        android:title="@string/categories"
         android:icon="@drawable/ic_question_answer_black_24dp"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_ranking"
         android:enabled="true"
-        android:title="Ranking"
+        android:title="@string/ranking"
         android:icon="@drawable/ic_star_black_24dp"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_settings"
         android:enabled="true"
-        android:title="Settings"
+        android:title="@string/settings"
         android:icon="@drawable/ic_settings_black_24dp"
         app:showAsAction="ifRoom"/>
 

@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,7 +44,7 @@ public class SettingsFragment extends Fragment {
     Button btnChangePwd,btnSignOut, btnSignIn, mBtnDelete;
     GoogleApiClient mGoogleApiClient;
     TextView usernameLabel, userScoreLabel;
-
+    ImageView logo_settings;
     FirebaseDatabase database;
     DatabaseReference ranking, users;
 
@@ -73,10 +74,10 @@ public class SettingsFragment extends Fragment {
 
 
         btnSignOut = myFragment.findViewById(R.id.signoutButton);
-        btnChangePwd = myFragment.findViewById(R.id.changePasswordButton);
         usernameLabel = myFragment.findViewById(R.id.usernameLabel);
         userScoreLabel = myFragment.findViewById(R.id.userScoreLabel);
         mBtnDelete = myFragment.findViewById(R.id.deleteAccountBtn);
+        logo_settings = myFragment.findViewById(R.id.logo);
         String welcomeText;
 
         btnSignIn = myFragment.findViewById(R.id.signInIfNotAlreadySignedInButton);
@@ -110,9 +111,10 @@ public class SettingsFragment extends Fragment {
         }else if(Common.isAnonUser){
             welcomeText = "Please sign in to use this view!";
             usernameLabel.setText(welcomeText);
-            btnChangePwd.setVisibility(View.GONE);
             btnSignOut.setVisibility(View.GONE);
             userScoreLabel.setVisibility(View.GONE);
+            mBtnDelete.setVisibility(View.GONE);
+
         } else{
             welcomeText = "Welcome " + Common.currentUser.getUserName() + "!";
             usernameLabel.setText(welcomeText);
@@ -134,12 +136,6 @@ public class SettingsFragment extends Fragment {
                     });
         }
 
-        btnChangePwd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
 
         btnSignOut.setOnClickListener(new View.OnClickListener() {
