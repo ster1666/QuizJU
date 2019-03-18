@@ -25,4 +25,5 @@
     <string name="signOutPrompt">Sign Out</string>
     <string name="playWithoutAccountPrompt">Play Without Account</string>
     <string name="playAgainPrompt">Play Again</string>
+    <string name="deleteAccountPrompt">Delete Account</string>
 </resources>

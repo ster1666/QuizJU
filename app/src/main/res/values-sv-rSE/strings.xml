@@ -21,4 +21,5 @@
     <string name="signOutPrompt">Logga Ut</string>
     <string name="playWithoutAccountPrompt">Spela Utan Konto</string>
     <string name="playAgainPrompt">Spela Igen</string>
+    <string name="deleteAccountPrompt">Radera Konto</string>
 </resources>

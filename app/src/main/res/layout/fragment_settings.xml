@@ -48,7 +48,7 @@
             android:id="@+id/deleteAccountBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="deleteAccountPrompt"
+            android:text="@string/deleteAccountPrompt"
             android:layout_above="@id/signoutButton"
             />
 

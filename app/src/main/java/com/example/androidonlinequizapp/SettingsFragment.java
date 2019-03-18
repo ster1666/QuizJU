@@ -40,12 +40,12 @@ public class SettingsFragment extends Fragment {
 
     View myFragment;
 
-    Button btnChangePwd,btnSignOut, btnSignIn;
+    Button btnChangePwd,btnSignOut, btnSignIn, mBtnDelete;
     GoogleApiClient mGoogleApiClient;
     TextView usernameLabel, userScoreLabel;
 
     FirebaseDatabase database;
-    DatabaseReference ranking;
+    DatabaseReference ranking, users;
 
     final static String TAG = "SettingsFragment";
 
@@ -76,12 +76,14 @@ public class SettingsFragment extends Fragment {
         btnChangePwd = myFragment.findViewById(R.id.changePasswordButton);
         usernameLabel = myFragment.findViewById(R.id.usernameLabel);
         userScoreLabel = myFragment.findViewById(R.id.userScoreLabel);
+        mBtnDelete = myFragment.findViewById(R.id.deleteAccountBtn);
         String welcomeText;
 
         btnSignIn = myFragment.findViewById(R.id.signInIfNotAlreadySignedInButton);
 
         database = FirebaseDatabase.getInstance();
         ranking = database.getReference("Ranking");
+        users = database.getReference("Users");
 
 
         if(Common.isFirebaseUser){
@@ -194,6 +196,36 @@ public class SettingsFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
                 Common.isAnonUser = false;
+            }
+        });
+
+        mBtnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Common.isFirebaseUser){
+                    AuthUI.getInstance().delete(getActivity()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isComplete()){
+
+                                ranking.child(Common.currentFirebaseUser.getDisplayName()).removeValue();
+                                users.child(Common.currentFirebaseUser.getDisplayName()).removeValue();
+
+                                Common.isFirebaseUser = false;
+
+                                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                startActivity(intent);
+
+                            }
+                        }
+                    });
+                }else{
+                    ranking.child(Common.currentUser.getUserName()).removeValue();
+                    users.child(Common.currentUser.getUserName()).removeValue();
+
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
