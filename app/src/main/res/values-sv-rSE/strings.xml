@@ -22,4 +22,7 @@
     <string name="playWithoutAccountPrompt">Spela Utan Konto</string>
     <string name="playAgainPrompt">Spela Igen</string>
     <string name="deleteAccountPrompt">Radera Konto</string>
+    <string name="welcome_text">Välkommen</string>
+    <string name="please_log_in">Logga in för att använda den här vyn</string>
+    <string name="score_text">Dina poäng: </string>
 </resources>

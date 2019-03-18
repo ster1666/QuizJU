@@ -26,4 +26,7 @@
     <string name="playWithoutAccountPrompt">Play Without Account</string>
     <string name="playAgainPrompt">Play Again</string>
     <string name="deleteAccountPrompt">Delete Account</string>
+    <string name="welcome_text">Welcome</string>
+    <string name="please_log_in">Please sign in to use this view!</string>
+    <string name="score_text">You have a score of: </string>
 </resources>

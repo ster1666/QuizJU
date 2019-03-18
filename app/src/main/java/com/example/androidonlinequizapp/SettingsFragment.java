@@ -41,7 +41,6 @@ public class SettingsFragment extends Fragment {
     View myFragment;
 
     Button btnChangePwd,btnSignOut, btnSignIn, mBtnDelete;
-    GoogleApiClient mGoogleApiClient;
     TextView usernameLabel, userScoreLabel;
 
     FirebaseDatabase database;
@@ -87,7 +86,7 @@ public class SettingsFragment extends Fragment {
 
 
         if(Common.isFirebaseUser){
-            welcomeText = "Welcome " + Common.currentFirebaseUser.getDisplayName() + "!";
+            welcomeText = getString(R.string.welcome_text) + Common.currentFirebaseUser.getDisplayName() + "!";
             usernameLabel.setText(welcomeText);
             btnSignIn.setVisibility(View.GONE);
             btnChangePwd.setVisibility(View.GONE);
@@ -108,13 +107,13 @@ public class SettingsFragment extends Fragment {
                     });
 
         }else if(Common.isAnonUser){
-            welcomeText = "Please sign in to use this view!";
-            usernameLabel.setText(welcomeText);
+           String pleaseLogIn = getString(R.string.please_log_in);
+            usernameLabel.setText(pleaseLogIn);
             btnChangePwd.setVisibility(View.GONE);
             btnSignOut.setVisibility(View.GONE);
             userScoreLabel.setVisibility(View.GONE);
         } else{
-            welcomeText = "Welcome " + Common.currentUser.getUserName() + "!";
+            welcomeText = getString(R.string.welcome_text) + Common.currentUser.getUserName() + "!";
             usernameLabel.setText(welcomeText);
             btnSignIn.setVisibility(View.GONE);
 
@@ -123,7 +122,7 @@ public class SettingsFragment extends Fragment {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             long scoreForCurrentlyLoggedInUser = (long) dataSnapshot.child("score").getValue();
-                            final String text = "You " + "have a score of: " + scoreForCurrentlyLoggedInUser;
+                            final String text = getString(R.string.score_text) + scoreForCurrentlyLoggedInUser;
                             userScoreLabel.setText(text);
                         }
 
