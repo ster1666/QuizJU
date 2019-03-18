@@ -36,4 +36,7 @@
     <string name="ranking">Poäng</string>
     <string name="settings">Inställningar</string>
     <string name="play">Spela</string>
+    <string name="please_log_in">Logga in för att använda den här vyn!</string>
+    <string name="welcome_text">Välkommen </string>
+    <string name="score_text">Poäng: </string>
 </resources>

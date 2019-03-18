@@ -72,7 +72,6 @@ public class SettingsFragment extends Fragment {
 
 
         btnSignOut = myFragment.findViewById(R.id.signoutButton);
-        btnChangePwd = myFragment.findViewById(R.id.changePasswordButton);
         usernameLabel = myFragment.findViewById(R.id.usernameLabel);
         userScoreLabel = myFragment.findViewById(R.id.userScoreLabel);
         mBtnDelete = myFragment.findViewById(R.id.deleteAccountBtn);
@@ -86,17 +85,16 @@ public class SettingsFragment extends Fragment {
 
 
         if(Common.isFirebaseUser){
-            welcomeText = getString(R.string.welcome_text) + Common.currentFirebaseUser.getDisplayName() + "!";
+            welcomeText = getString(R.string.welcome_text) + " " + Common.currentFirebaseUser.getDisplayName() + "!";
             usernameLabel.setText(welcomeText);
             btnSignIn.setVisibility(View.GONE);
-            btnChangePwd.setVisibility(View.GONE);
 
             ranking.child(Common.currentFirebaseUser.getDisplayName())
                     .addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                            long scoreForCurrentlyLoggedInUser = (long) dataSnapshot.child("score").getValue();
-                          final String text = "You " + "have a score of: " + scoreForCurrentlyLoggedInUser;
+                          final String text = getString(R.string.score_text) + scoreForCurrentlyLoggedInUser;
                           userScoreLabel.setText(text);
                         }
 
@@ -109,11 +107,11 @@ public class SettingsFragment extends Fragment {
         }else if(Common.isAnonUser){
            String pleaseLogIn = getString(R.string.please_log_in);
             usernameLabel.setText(pleaseLogIn);
-            btnChangePwd.setVisibility(View.GONE);
             btnSignOut.setVisibility(View.GONE);
             userScoreLabel.setVisibility(View.GONE);
+            mBtnDelete.setVisibility(View.GONE);
         } else{
-            welcomeText = getString(R.string.welcome_text) + Common.currentUser.getUserName() + "!";
+            welcomeText = getString(R.string.welcome_text) + " " + Common.currentUser.getUserName() + "!";
             usernameLabel.setText(welcomeText);
             btnSignIn.setVisibility(View.GONE);
 
@@ -132,13 +130,6 @@ public class SettingsFragment extends Fragment {
                         }
                     });
         }
-
-        btnChangePwd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
 
         btnSignOut.setOnClickListener(new View.OnClickListener() {
