@@ -45,11 +45,19 @@
         android:layout_height="match_parent">
 
         <Button
+            android:id="@+id/deleteAccountBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="deleteAccountPrompt"
+            android:layout_above="@id/signoutButton"
+            />
+
+        <Button
             android:id="@+id/signoutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:text="@string/logoutButton" />
+            android:text="@string/signOutPrompt" />
 
     </RelativeLayout>
 

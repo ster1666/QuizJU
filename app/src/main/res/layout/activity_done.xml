@@ -56,7 +56,7 @@
                 android:layout_margin="8dp"
                 android:background="#AD1457"
                 android:foreground="?android:attr/selectableItemBackground"
-                android:text="@string/try_again_prompt"
+                android:text="@string/playAgainPrompt"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:theme="@style/MyButton" />

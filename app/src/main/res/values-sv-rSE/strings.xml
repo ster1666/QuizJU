@@ -13,7 +13,12 @@
     <string name="error_incorrect_password">Fel lösenord</string>
     <string name="error_field_required">Obligatoriskt fält</string>
     <string name="permission_rationale">Tillåt kontaktåtkomst</string>
-    <string name="signup_button_text">"Skapa konto "</string>
+    <string name="signup_button_text">Skapa Konto</string>
     <string name="hello_blank_fragment">Hej tomt fragment</string>
     <string name="error_invalid_email">Ogiltlig emailadress</string>
+    <string name="change_pwd">Byt Lösenord</string>
+    <string name="promptSignIn">Logga In</string>
+    <string name="signOutPrompt">Logga Ut</string>
+    <string name="playWithoutAccountPrompt">Spela Utan Konto</string>
+    <string name="playAgainPrompt">Spela Igen</string>
 </resources>

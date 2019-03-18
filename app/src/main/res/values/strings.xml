@@ -20,9 +20,9 @@
     </string>
     <string name="prompt_username">Enter Username</string>
     <string name="signup_button_text">No account? Create one now!</string>
-    <string name="change_pwd">Change Password</string>
-    <string name="logoutButton">Logout</string>
-    <string name="try_again_prompt">Play Again</string>
-    <string name="playWithoutAccount">Play Without Account</string>
+    <string name="change_pwd">Change password</string>
     <string name="promptSignIn">Sign In</string>
+    <string name="signOutPrompt">Sign Out</string>
+    <string name="playWithoutAccountPrompt">Play Without Account</string>
+    <string name="playAgainPrompt">Play Again</string>
 </resources>
