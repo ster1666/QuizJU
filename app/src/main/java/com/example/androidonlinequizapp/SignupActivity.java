@@ -31,7 +31,7 @@ public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
     ImageView mDefaultProfileImage;
     EditText mNewUsername, mNewEmail, mNewPassword;
-    Button mCreateAccountButton;
+    Button mCreateAccountButton, mCancelBtn;
 
     FirebaseDatabase database;
     DatabaseReference users, ranking;
@@ -47,6 +47,8 @@ public class SignupActivity extends AppCompatActivity {
         mNewUsername = findViewById(R.id.newusername);
         mNewEmail = findViewById(R.id.newemail);
         mNewPassword = findViewById(R.id.newpassword);
+
+        mCancelBtn = findViewById(R.id.cancel_button);
 
         mCreateAccountButton = findViewById(R.id.create_new_account_button);
 
@@ -64,6 +66,15 @@ public class SignupActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
         ranking = database.getReference("Ranking");
+
+        mCancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
@@ -123,10 +134,6 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
