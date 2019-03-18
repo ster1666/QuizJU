@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/flare"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -33,7 +34,8 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/browser_actions_bg_grey">
 
                 <EditText
                     android:id="@+id/username"
@@ -46,13 +48,16 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPersonName"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:textColor="@android:color/white"
+                    android:textColorHighlight="@android:color/holo_red_dark"
+                    android:textColorHint="@android:color/white" />
 
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/browser_actions_bg_grey">>
 
                 <EditText
                     android:id="@+id/password"
@@ -64,7 +69,8 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="@android:color/white" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -80,7 +86,8 @@
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/google_sign_in_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textAlignment="center">
 
             </com.google.android.gms.common.SignInButton>
 

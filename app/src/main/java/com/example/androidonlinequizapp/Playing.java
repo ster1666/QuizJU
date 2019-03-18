@@ -29,7 +29,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
 
 
     final static long INTERVAL = 1000;
-    final static long TIMEOUT = 11000;
+    final static long TIMEOUT = 16000;
 
     int progressValue = 0;
 
