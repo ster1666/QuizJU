@@ -34,6 +34,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 
 import static com.example.androidonlinequizapp.R.layout.activity_login;
+import static com.google.firebase.inappmessaging.internal.Logging.TAG;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -167,9 +168,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(homeActivity);
                 finish();
             } else {
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
+                Log.d(TAG, "SIGN IN FAILED");
+
+                finish();
             }
         }
     }
