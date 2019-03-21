@@ -22,7 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Done extends AppCompatActivity {
 
-    //TEST
     Button btnTryAgain;
     TextView txtResultsScore,getTxtResultQuestion;
     ProgressBar progressBar;

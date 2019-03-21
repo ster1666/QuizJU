@@ -120,26 +120,4 @@ public class RankingFragment extends Fragment {
                 });
     }
 
-    //Create interface callback to process value
-
-   /* private void updateScore(final String userName, final RankingCallback<Ranking> callback) {
-        questionScore.orderByChild("user").equalTo(userName)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot data:dataSnapshot.getChildren())
-                        {
-                            QuestionScore ques = data.getValue(QuestionScore.class);
-                            sum+=Integer.parseInt(ques.getScore());
-                        }
-                        Ranking ranking = new Ranking(userName,sum);
-                        callback.callback(ranking);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-    }*/
 }

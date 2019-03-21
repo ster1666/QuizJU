@@ -24,7 +24,7 @@ import com.google.firebase.database.core.Tag;
 
 import androidx.annotation.NonNull;
 
-import static com.example.androidonlinequizapp.R.drawable.ic_account_circle_black_24dp;
+
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -147,6 +147,6 @@ public class SignupActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // Do Here what ever you want do on back press;
+        // Disable back button
     }
 }

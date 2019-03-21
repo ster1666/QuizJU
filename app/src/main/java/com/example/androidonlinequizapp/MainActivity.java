@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        //Firebase
+
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
 

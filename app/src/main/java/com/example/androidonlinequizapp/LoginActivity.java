@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mSignUpButton = findViewById(R.id.signup_button);
         mPlayWithoutAccBtn = findViewById(R.id.playWithoutAccount);
 
-        //Firebase
+
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
         rankingTbl = database.getReference("Ranking");

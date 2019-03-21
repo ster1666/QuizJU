@@ -48,12 +48,6 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing);
 
-        //firebase
-
-        /*database = FirebaseDatabase.getInstance();
-        questions = database.getReference();
-*/
-        //views
 
         txtScore = (TextView)findViewById(R.id.txtScore);
         txtQuestionNum = (TextView)findViewById(R.id.txtTotalQuestion);
@@ -77,7 +71,6 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
         btnC.setOnClickListener(this);
         btnD.setOnClickListener(this);
 
-        //fadeIn();
 
         fadeIn(2000, btnA, btnB, btnC,btnD);
 
@@ -110,7 +103,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
             Button clickedButton = (Button)view;
             fadeIn(2000, btnA, btnB, btnC,btnD);
 
-            //  fadeIn();
+
 
             if (clickedButton.getText().equals(Common.questionsList.get(index).getCorrectAnswer()))
             {
@@ -121,7 +114,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
                 correctAnswer++;
                 showQuestion(++index); //next question
 
-               // fadeIn();
+
 
             }
             else
@@ -132,17 +125,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
 
                 showQuestion(++index); //next question
 
-                //fadeIn();
-                /* IF WE WANT TO END GAME ON WRONG ANSWER
-                Intent intent = new Intent(this,Done.class);
-                Bundle dataSend = new Bundle();
-                dataSend.putInt("SCORE",score);
-                dataSend.putInt("TOTAL",totalQuestion);
-                dataSend.putInt("CORRECT",correctAnswer);
-                intent.putExtras(dataSend);
-                startActivity(intent);
-                finish();
-                */
+
             }
 
             txtScore.setText(String.format("%d",score));
@@ -161,7 +144,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
             progressValue=0;
             fadeIn(2000, btnA, btnB, btnC,btnD);
 
-            // fadeIn();
+
 
             if (Common.questionsList.get(index).getIsImageQuestion().equals("true"))
             {
@@ -190,7 +173,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
         }
         else
         {
-            //IF its final question
+            //Final question
             Intent intent = new Intent(this,Done.class);
             Bundle dataSend = new Bundle();
             dataSend.putInt("SCORE",score);
@@ -198,7 +181,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
             dataSend.putInt("CORRECT",correctAnswer);
             intent.putExtras(dataSend);
             startActivity(intent);
-            //finish();
+
 
         }
 
