@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignupActivity">
@@ -17,13 +18,12 @@
             android:orientation="vertical" >
 
             <ImageView
-                android:src="@drawable/ic_account_circle_black_24dp"
-                android:layout_gravity="center"
                 android:id="@+id/default_profile_image"
                 android:layout_width="250dp"
                 android:layout_height="250dp"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                tools:srcCompat="@tools:sample/avatars[0]" />
+                android:src="@drawable/ju_se" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -85,7 +85,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Create Account" />
+                android:text="@string/create_account" />
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cancel" />
 
         </LinearLayout>
     </ScrollView>

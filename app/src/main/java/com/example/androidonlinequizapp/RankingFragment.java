@@ -21,8 +21,10 @@ import com.example.androidonlinequizapp.Interface.RankingCallback;
 import com.example.androidonlinequizapp.Model.Question;
 import com.example.androidonlinequizapp.Model.QuestionScore;
 import com.example.androidonlinequizapp.Model.Ranking;
+import com.example.androidonlinequizapp.Model.User;
 import com.example.androidonlinequizapp.ViewHolder.RankingViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -73,17 +75,6 @@ public class RankingFragment extends Fragment {
         layoutManager.setStackFromEnd(true);
         rankingList.setLayoutManager(layoutManager);
 
-
-        updateScore(Common.currentUser.getUserName(), new RankingCallback<Ranking>() {
-            @Override
-            public void callback(Ranking ranking) {
-                rankingTbl.child(ranking.getUserName())
-                        .setValue(ranking);
-                //showRanking();
-
-            }
-        });
-
         adapter = new FirebaseRecyclerAdapter<Ranking, RankingViewHolder>(
                 Ranking.class,
                 R.layout.layout_ranking,
@@ -131,9 +122,7 @@ public class RankingFragment extends Fragment {
 
     //Create interface callback to process value
 
-
-
-    private void updateScore(final String userName, final RankingCallback<Ranking> callback) {
+   /* private void updateScore(final String userName, final RankingCallback<Ranking> callback) {
         questionScore.orderByChild("user").equalTo(userName)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -152,5 +141,5 @@ public class RankingFragment extends Fragment {
 
                     }
                 });
-    }
+    }*/
 }

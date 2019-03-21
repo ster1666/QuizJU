@@ -21,13 +21,15 @@ import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
+import java.util.Random;
+
 import dagger.multibindings.ElementsIntoSet;
 
 public class Playing extends AppCompatActivity implements View.OnClickListener {
 
 
     final static long INTERVAL = 1000;
-    final static long TIMEOUT = 11000;
+    final static long TIMEOUT = 16000;
 
     int progressValue = 0;
 
@@ -36,11 +38,6 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
     int index=0,score=0,thisQuestion=0,totalQuestion=0,correctAnswer;
 
 
-    //FIREBASE
-/*
-    FirebaseDatabase database;
-    DatabaseReference questions;
-*/
     ProgressBar progressBar;
     ImageView question_image;
     Button btnA,btnB,btnC,btnD;
@@ -68,8 +65,6 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
 
 
 
-
-
         btnA = (Button)findViewById(R.id.btnAnswerA);
         btnB = (Button)findViewById(R.id.btnAnswerB);
         btnC = (Button)findViewById(R.id.btnAnswerC);
@@ -86,10 +81,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
 
         fadeIn(2000, btnA, btnB, btnC,btnD);
 
-
     }
-
-
 
 
     private static void fadeIn(long duration, final View... views) {
@@ -107,11 +99,12 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
     }
 
 
-
     @Override
     public void onClick(View view) {
 
         mCountDown.cancel();
+
+
         if (index < totalQuestion)
         {
             Button clickedButton = (Button)view;
@@ -169,8 +162,6 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
             fadeIn(2000, btnA, btnB, btnC,btnD);
 
             // fadeIn();
-
-
 
             if (Common.questionsList.get(index).getIsImageQuestion().equals("true"))
             {

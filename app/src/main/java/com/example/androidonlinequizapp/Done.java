@@ -1,6 +1,7 @@
 package com.example.androidonlinequizapp;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,17 +11,24 @@ import android.widget.TextView;
 
 import com.example.androidonlinequizapp.Common.Common;
 import com.example.androidonlinequizapp.Model.QuestionScore;
+import com.example.androidonlinequizapp.Model.Ranking;
+import com.example.androidonlinequizapp.Model.User;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Done extends AppCompatActivity {
 
+    //TEST
     Button btnTryAgain;
     TextView txtResultsScore,getTxtResultQuestion;
     ProgressBar progressBar;
 
     FirebaseDatabase database;
-    DatabaseReference question_score;
+    DatabaseReference question_score, ranking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +38,7 @@ public class Done extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         question_score = database.getReference("Question_Score");
+        ranking = database.getReference("Ranking");
 
         txtResultsScore = (TextView)findViewById(R.id.txtTotalScore);
         getTxtResultQuestion = (TextView)findViewById(R.id.txtTotalQuestion);
@@ -64,14 +73,53 @@ public class Done extends AppCompatActivity {
 
             //Upload point to Firebase
 
-            question_score.child(String.format("%s_%s", Common.currentUser.getUserName(),
-                    Common.categoryId))
-
-                    .setValue(new QuestionScore(String.format("%s_%s", Common.currentUser.getUserName(),
-                            Common.categoryId),
-                            Common.currentUser.getUserName(),
-                            String.valueOf(score)));
+            if(Common.isFirebaseUser){
+                uploadScoreForGoogleUser(Common.currentFirebaseUser, score);
+            }else if (!Common.isFirebaseUser && !Common.isAnonUser){
+                    uploadScoreForAppUser(Common.currentUser, score);
+            }
         }
+
+    }
+
+    private void uploadScoreForGoogleUser(final FirebaseUser user, final int score){
+
+        ranking.child(user.getDisplayName())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        long currentScore = (long) dataSnapshot.child("score").getValue();
+                        long newScore = currentScore + score;
+
+                        ranking.child(Common.currentFirebaseUser.getDisplayName())
+                                .setValue(new Ranking(user.getDisplayName(), newScore));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+    }
+
+    private void uploadScoreForAppUser(final User user, final long score){
+        ranking.child(user.getUserName())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        long currentScore = (long) dataSnapshot.child("score").getValue();
+                        long newScore = currentScore + score;
+
+                        ranking.child(user.getUserName())
+                                .setValue(new Ranking(user.getUserName(), newScore));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
 
     }
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidOnlineQuizApp</string>
+    <string name="name">Namn</string>
+    <string name="score">Poäng</string>
+    <string name="prompt_username">Skriv in användarnamn</string>
+    <string name="title_activity_login">Logga in</string>
+    <string name="prompt_email">Skriv in email</string>
+    <string name="prompt_password">Skriv in lösenord</string>
+    <string name="action_sign_in">Logga in</string>
+    <string name="action_sign_in_short">Logga in</string>
+    <string name="error_invalid_password">Lösenordet är för kort</string>
+    <string name="error_incorrect_password">Fel lösenord</string>
+    <string name="error_field_required">Obligatoriskt fält</string>
+    <string name="permission_rationale">Tillåt kontaktåtkomst</string>
+    <string name="signup_button_text">Skapa Konto</string>
+    <string name="hello_blank_fragment">Hej tomt fragment</string>
+    <string name="error_invalid_email">Ogiltlig emailadress</string>
+    <string name="change_pwd">Byt Lösenord</string>
+    <string name="promptSignIn">Logga In</string>
+    <string name="signOutPrompt">Logga Ut</string>
+    <string name="playWithoutAccountPrompt">Spela Utan Konto</string>
+    <string name="playAgainPrompt">Spela Igen</string>
+    <string name="deleteAccountPrompt">Radera Konto</string>
+    <string name="create_account">Skapa konto</string>
+    <string name="cancel">Avbryt</string>
+    <string name="user_exists">Användare existerar!</string>
+    <string name="user_regSuccess">Användare registrerades!</string>
+    <string name="enter_username">Skriv in användarnamn</string>
+    <string name="wrong_password">Felaktigt lösenord</string>
+    <string name="user_not_exists">Användare existerar inte</string>
+    <string name="wrong_password_login">Felaktigt lösenord</string>
+    <string name="enter_username_login">Skriv in användarnamn</string>
+    <string name="user_not_exists_login">Användare existerar inte</string>
+    <string name="categories">Kategorier</string>
+    <string name="ranking">Poäng</string>
+    <string name="settings">Inställningar</string>
+    <string name="play">Spela</string>
+    <string name="please_log_in">Logga in för att använda den här vyn!</string>
+    <string name="welcome_text">Välkommen </string>
+    <string name="score_text">Poäng: </string>
+</resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/vertical_background"
+    android:background="@android:color/white"
     tools:context=".Start">
 
 
@@ -15,33 +15,33 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
+        android:contentDescription="TODO"
         android:gravity="center"
-        android:src="@drawable/logo"
-        android:contentDescription="TODO" />
+        android:src="@drawable/ju_se" />
 
 
     <androidx.cardview.widget.CardView
-       app:cardElevation="4dp"
-       android:layout_centerInParent="true"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:cardElevation="4dp">
 
-       <Button
-           android:id="@+id/btnPlay"
-           style="@style/Widget.AppCompat.Button.Borderless"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginStart="8dp"
-           android:layout_marginTop="8dp"
-           android:layout_marginEnd="8dp"
-           android:layout_marginBottom="8dp"
-           android:background="#AD1457"
-           android:foreground="?android:attr/selectableItemBackground"
-           android:text="PLAY"
-           android:textColor="@android:color/white"
-           android:textStyle="bold"
-           android:theme="@style/MyButton" />
-   </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/btnPlay"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#000000"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/play"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:theme="@style/MyButton" />
+    </androidx.cardview.widget.CardView>
 
 
 </RelativeLayout>
